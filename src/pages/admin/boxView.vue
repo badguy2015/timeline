@@ -1,21 +1,16 @@
 <template>
-  <!-- <div class="about">
-    <h1>/admin/indexView</h1>
-    <el-row>
-      <router-link to="/admin/category/index">admin/category/index</router-link><br/>
-      <router-link to="/admin/category/add">admin/category/add</router-link><br/>
-      <router-link to="/admin/category/edit">admin/category/edit</router-link><br/>
-      <router-link to="/admin/project/index">admin/project/index</router-link><br/>
-      <router-link to="/admin/project/add">admin/project/add</router-link><br/>
-      <router-link to="/admin/project/edit">admin/project/edit</router-link><br/>
-    </el-row>
-    <el-row>
-      <router-view></router-view>
-    </el-row>
-  </div> -->
   <div>
     <el-container>
-      <el-header>Header</el-header>
+      <el-header>
+        <el-row>
+          <el-col :span="4"><div class="grid-content bg-purple"><img src="@/assets/admin/images/logo.jpg" alt="logo" title="logo" class="logo" /></div></el-col>
+          <!-- <el-col :span="4"><div class="grid-content bg-purple-light">2</div></el-col>
+          <el-col :span="4"><div class="grid-content bg-purple"></div>3</el-col>
+          <el-col :span="4"><div class="grid-content bg-purple-light">4</div></el-col>
+          <el-col :span="4"><div class="grid-content bg-purple"></div>5</el-col> -->
+          <el-col :span="20"><div class="grid-content bg-purple-light" style="text-align:right;">admin</div></el-col>
+        </el-row>
+      </el-header>
       <el-container>
         <el-aside width="230px">
           <el-row>
@@ -42,9 +37,9 @@
                 </el-menu-item-group>
                 <el-menu-item-group>
                 <template slot="title"><i class="el-icon-s-operation"></i>项目细项</template>
-                <el-menu-item index="/admin/project/item/index"><i class="el-icon-chat-line-square"></i>列表</el-menu-item>
-                <el-menu-item index="/admin/project/item/edit"><i class="el-icon-edit-outline"></i>编辑</el-menu-item>
-                <el-menu-item index="/admin/project/item/add"><i class="el-icon-edit"></i> 添加</el-menu-item>
+                <el-menu-item index="/admin/item/index"><i class="el-icon-chat-line-square"></i>列表</el-menu-item>
+                <!-- <el-menu-item index="/admin/item/edit"><i class="el-icon-edit-outline"></i>编辑</el-menu-item> -->
+                <el-menu-item index="/admin/item/add"><i class="el-icon-edit"></i> 添加</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
             </el-menu>
@@ -103,7 +98,7 @@
           <router-view></router-view>
         </el-main>
       </el-container>
-      <el-footer>Footer</el-footer>
+      <el-footer></el-footer>
     </el-container>
   </div>
 </template>
@@ -111,14 +106,24 @@
 <style>
 .el-header,
 .el-footer {
-  background-color: #b3c0d1;
-  color: #333;
+  /* background-color: #b3c0d1; */
+  /* color: #333; */
   text-align: center;
   line-height: 60px;
 }
-
+.el-header{
+  background-image: url("@/assets/admin/images/header.jpg");
+  background-size: 100% auto;
+  background-position: top left; /* 从左上角开始显示背景图 */
+}
+.el-footer{
+  background-image: url("@/assets/admin/images/header.jpg");
+  background-size: 100% auto;
+  background-position: bottom left; /* 从左上角开始显示背景图 */
+}
 .el-aside {
-  background-color: #d3dce6;
+  /* background-color: #b3c0d1; */
+  background-color: #fff;
   color: #333;
   text-align: center;
   line-height: 200px;
@@ -142,5 +147,9 @@ body > .el-container {
 
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
+}
+
+.logo{
+  width: 50px;
 }
 </style>

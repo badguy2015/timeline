@@ -37,7 +37,7 @@ const routes = [{
   component: () => import('../pages/admin/project/indexView.vue') // create,还是执行了两次
 },
 {
-  path: '/adminx',
+  path: '/admin',
   redirect: '/admin/project/index',
   component: () => import('../pages/admin/boxView.vue'), // <router-view></router-view>
   children: [

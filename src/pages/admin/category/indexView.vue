@@ -153,7 +153,7 @@ export default {
   },
   filters: {
     'formatDate' (timeStamp) {
-      if (timeStamp > 10000) {
+      if (timeStamp > 1000000000000 || timeStamp < 1000000000000) {
         const date = new Date(timeStamp)
         // return date.toLocaleString() // 使用默认的日期和时间格式
         const year = date.getFullYear()

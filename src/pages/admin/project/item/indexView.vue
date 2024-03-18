@@ -8,14 +8,18 @@
       <!-- <el-table-column prop="content" label="内容"> </el-table-column> -->
       <el-table-column prop="time_show_type" label="时间格式"> </el-table-column>
       <!-- <el-table-column prop="attachment" label="附件"> </el-table-column> -->
-      <el-table-column prop="time" label="发生时间"> </el-table-column>
+      <el-table-column prop="time" label="发生时间" width="180">
+        <template slot-scope="scope">
+          {{ scope.row.time | formatDate }}
+        </template>
+      </el-table-column>
       <el-table-column prop="is_delete" label="是否已删除"></el-table-column>
-      <el-table-column prop="create_time" label="更新时间">
+      <el-table-column prop="create_time" label="创建时间" width="180">
         <template slot-scope="scope">
           {{ scope.row.create_time | formatDate }}
         </template>
         </el-table-column>
-      <el-table-column prop="update_time" label="更新时间">
+      <el-table-column prop="update_time" label="更新时间" width="180">
         <template slot-scope="scope">
           {{ scope.row.update_time | formatDate }}
         </template>
@@ -74,6 +78,7 @@ export default {
     // 1 列表
     getList () {
       try {
+        this.where.project_id = this.$route.query.project_id
         axios.post('/admin/item/index', { ...this.pages, ...this.where }).then((res) => {
           // 接口异常提示
           if (res.data.code !== 0) {
@@ -161,7 +166,7 @@ export default {
   },
   filters: {
     'formatDate' (timeStamp) {
-      if (timeStamp) {
+      if (timeStamp > 1000000000000 || timeStamp < 1000000000000) {
         const date = new Date(timeStamp)
         // return date.toLocaleString() // 使用默认的日期和时间格式
         const year = date.getFullYear()

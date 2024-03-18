@@ -75,7 +75,6 @@ export default {
     try {
       axios.post('/admin/category/index', { parent_id: 0 }).then((res) => {
         if (res.data.code === 0) {
-          console.log(res.data)
           this.parent_list = res.data.data.list
         }
       })
@@ -89,7 +88,6 @@ export default {
       try {
         axios.post('/admin/category/detail', { id: id }).then((res) => {
           if (res.data.code === 0) {
-            console.log(res.data)
             // 赋值给formData
             this.formData = res.data.data
           }

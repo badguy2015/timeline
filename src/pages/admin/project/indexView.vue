@@ -14,12 +14,17 @@
         </template>
       </el-table-column>
       <el-table-column prop="item_qty" label="事项数"> </el-table-column>
-      <el-table-column prop="is_delete" label="是否已删除"></el-table-column>
+      <!-- <el-table-column prop="is_delete" label="是否已删除"></el-table-column> -->
       <el-table-column prop="cat_id" label="分类id"> </el-table-column>
-      <el-table-column prop="org_id" label="组织id"> </el-table-column>
-      <el-table-column fixed="right" label="操作">
+      <!-- <el-table-column prop="org_id" label="组织id"> </el-table-column> -->
+      <el-table-column prop="top" label="置顶"> </el-table-column>
+      <el-table-column prop="sort" label="排序"> </el-table-column>
+      <el-table-column prop="desc" label="备注"> </el-table-column>
+      <el-table-column fixed="right" label="操作" width="250">
         <template slot-scope="scope">
+          <el-button @click="detail(scope.row.id)" type="text">详情</el-button>
           <el-button @click="edit(scope.row.id)" type="text">编辑</el-button>
+          <el-button @click="addItem(scope.row.id)" type="text">添加事件</el-button>
           <el-button @click="remove(scope.row.id, list, scope.$index)" type="text">移除</el-button>
         </template>
       </el-table-column>
@@ -96,7 +101,15 @@ export default {
       this.pages.page = page
       this.getList()
     },
-    // 2 编辑
+    // 2.1 详情
+    detail (id) {
+      this.$router.push({ path: '/admin/item/index', query: { project_id: id } })
+    },
+    // 2.2 添加事件
+    addItem (id) {
+      this.$router.push({ path: '/admin/item/add', query: { project_id: id } })
+    },
+    // 2.3 编辑
     edit (id) {
       // 使用编程式导航进行重定向 /admin/project/edit?id=4
       this.$router.push({ path: '/admin/project/edit', query: { id: id } })
@@ -145,7 +158,7 @@ export default {
   },
   filters: {
     'formatDate' (timeStamp) {
-      if (timeStamp > 10000) {
+      if (timeStamp > 1000000000000 || timeStamp < 1000000000000) {
         const date = new Date(timeStamp)
         // return date.toLocaleString() // 使用默认的日期和时间格式
         const year = date.getFullYear()

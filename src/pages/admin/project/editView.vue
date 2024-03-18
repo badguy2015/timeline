@@ -1,11 +1,11 @@
 <template>
   <div>
     <el-form ref="form" :model="formData" label-width="80px">
-      <el-form-item label="组织ID">
+      <!-- <el-form-item label="组织ID">
         <el-input v-model="formData.org_id"></el-input>
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item label="标题">
-        <el-input v-model="formData.project_id"></el-input>
+        <el-input v-model="formData.title"></el-input>
       </el-form-item>
       <el-form-item label="分类">
         <el-select v-model="formData.cat_id" placeholder="请选择分类">

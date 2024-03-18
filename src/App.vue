@@ -67,7 +67,7 @@
         ><br />
       </el-row>
       <el-row>
-        <router-view></router-view>
+        <!-- <router-view></router-view> -->
       </el-row>
       <h2>=== demo end ===</h2>
     </div>
